@@ -52,7 +52,22 @@ public class Buffer
 	 */
 	
 	public String getContenu() {		
+		int tmp = texte.length();
+		checkSel();
+		
 		return texte.substring(selection.getDebut(), selection.getDebut()+selection.getLongueur());
+	}
+	
+	public void checkSel(){
+		Selection sel = getSel();
+		int d = getTexte().length();
+		
+		if (sel.debut > d){
+			setSel(d, 0);
+		}		
+		else if (sel.debut + sel.longueur > d){
+			setSel(sel.debut, d- sel.debut);
+		}
 	}
 	
 	/**

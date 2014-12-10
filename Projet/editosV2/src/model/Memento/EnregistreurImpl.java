@@ -112,6 +112,7 @@ public class EnregistreurImpl implements Enregistreur
 		if (h.get("copier")== null) throw new Exception("erreur commande \"copier\"dans l'enregistreur");
 		if (h.get("coller") == null) throw new Exception("erreur commande \"coller\"dans l'enregistreur");
 		if (h.get("ecrire") == null) throw new Exception("erreur commande \"ecrire\"dans l'enregistreur");
+		if (h.get("selectionner") == null) throw new Exception("erreur commande \"selectionner\"dans l'enregistreur");
 		if (h.get("effacer") == null) throw new Exception("erreur commande \"effacer\"dans l'enregistreur");
 		commandes = h;
 		

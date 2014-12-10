@@ -80,7 +80,10 @@ public class Client
 		CommandEnregistrable couper = new CouperEnregistrable(mot, enr);
 		CommandEnregistrable effacer = new EffacerEnregistrable(mot, enr);
 		CommandEnregistrable ecrire = new EcrireEnregistrable(ihm, mot, enr);
+		CommandEnregistrable selectionner = new SelectionnerEnregistrable(ihm, mot, enr);
 		
+		com.put("selectionner", (Command) selectionner);
+		comEnr.put("selectionner", selectionner);
 		com.put("copier", (Command) copier);
 		comEnr.put("copier", copier);
 		com.put("coller", (Command) coller);
@@ -91,7 +94,6 @@ public class Client
 		comEnr.put("effacer", effacer);
 		com.put("ecrire", (Command) ecrire);
 		comEnr.put("ecrire", ecrire);
-		com.put("selectionner", new Selectionner(ihm, mot));
 		com.put("enregistrer", new Enregistrer(enr));
 		com.put("arreter", new Arreter(enr));
 		com.put("rejouer", new Rejouer(enr));

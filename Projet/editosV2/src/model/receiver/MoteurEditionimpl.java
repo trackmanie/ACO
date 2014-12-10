@@ -117,6 +117,7 @@ public class MoteurEditionimpl extends Subject implements MoteurEdition
 	 */
 	
 	public void ecrire(char c) {
+		buffer.checkSel();
 		buffer.ecrire(c);
 		buffer.setSel(buffer.getSel().debut + 1, 0);
 		notifyObserver();
@@ -131,6 +132,7 @@ public class MoteurEditionimpl extends Subject implements MoteurEdition
 	
 	public void effacer() {
 		Selection sel = buffer.getSel();
+		buffer.checkSel();
 		if (sel.longueur != 0){
 			buffer.texte = buffer.texte.substring(0, sel.debut)+buffer.texte.substring(sel.debut+sel.longueur);
 			buffer.setSel(sel.debut, 0);
@@ -162,7 +164,8 @@ public class MoteurEditionimpl extends Subject implements MoteurEdition
 	
 	public void couper() {
 		Selection sel = buffer.getSel();
-		if (sel.longueur != 0){
+		buffer.checkSel();
+		if (sel.longueur !=0){	
 			pressPapier.texte = new String(buffer.getContenu());
 			buffer.texte = buffer.texte.substring(0, sel.debut)+buffer.texte.substring(sel.debut+sel.longueur);
 			buffer.setSel(sel.debut, 0);
@@ -179,6 +182,8 @@ public class MoteurEditionimpl extends Subject implements MoteurEdition
 	
 	public void coller() {
 		Selection sel = buffer.getSel();
+		int d = buffer.getTexte().length();
+		buffer.checkSel();
 		String s = new String(pressPapier.texte);
 		buffer.texte = buffer.texte.substring(0, sel.debut)+s+buffer.texte.substring(sel.debut+sel.longueur);
 		buffer.setSel(buffer.getSel().debut + s.length(), 0);
